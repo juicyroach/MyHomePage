@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Clean Code 筆記</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../resource/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../resource/css/modern-business.css" rel="stylesheet">
+
+    <!-- for syntax code -->
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shBrushJScript.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../resource/css/syntaxhighlighter/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+    <!-- Custom Fonts -->
+    <link href="../../resource/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../resource/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Juicyroach</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Font-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../html.html">HTML</a>
+                            </li>
+                            <li>
+                                <a href="../javascript.html">Javascript</a>
+                            </li>
+                            <li>
+                                <a href="../css.html">CSS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Back-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../server.html">Server</a>
+                            </li>
+                            <li>
+                                <a href="../java.html">Java</a>
+                            </li>
+                            <li>
+                                <a href="../db.html">DB</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resource <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../app.html">App</a>
+                            </li>
+                            <li>
+                                <a href="../website.html">Web Site</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Clean Code 筆記
+                    <small>by <a href="../about.html">Juicyroach</a>
+                    </small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-12">
+                <!-- Blog Post -->
+                <hr>
+                <!-- Date/Time -->
+                <p><i class="fa fa-clock-o"></i> Posted on Jul 30, 2015 at 09:00 PM</p>
+                <hr>
+                <!-- Preview Image -->
+                <img class="img-responsive" src="../../resource/img/java/content/clean-code.jpg" alt="">
+                <hr>
+                <!-- Post Content -->
+                <p class="chinese chineseBold">Chapter 1 無瑕的程式碼</p>
+                <br>
+                <p class="chinese chineseBold">Chapter 2 有意義的命名</p>
+                <p class="chinese">○ 程式清楚才是王道</p>
+                <ul>
+                    <li class="chineseContent">無論參數、函式、Class、Package，都要有好的命名</li>
+                    <li class="chineseContent">不要有誤導的命名 (如名詞太相似)</li>
+                    <li class="chineseContent">不要有無意義的贅詞(或冠詞) (如thisName的this)</li>
+                    <li class="chineseContent">命名要可以念出來，才可以溝通 (意味著不要過度簡稱)</li>
+                    <li class="chineseContent">不要有字首贅詞，會引來搜尋的麻煩</li>
+                    <li class="chineseContent">介面命名不要有字首，應將實體加上Imp較好</li>
+                    <li class="chineseContent">不要亂用厘語或幽默命名</li>
+                    <li class="chineseContent">同樣的意義不要換詞 (如Controller、Manager、Helper等固定一種就好)</li>
+                    <li class="chineseContent">不要用一個詞代表兩個意思 (如add同時代表append與insert)</li>
+                    <li class="chineseContent">使用CS領域的專業名詞命名更好 (如XXXVisitor)</li>
+                    <li class="chineseContent">可以從上下文看出意義</li>
+                    <li class="chineseContent">不要將東西縮寫放字首</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 3 函式</p>
+                <ul>
+                    <li class="chineseContent">簡短!! (限定盡量自己20行內)</li>
+                    <li class="chineseContent">一個函式只做一件事情，並且做好這個事情</li>
+                        <ul>
+                            <li class="chineseContent">同一層抽象概念的是同一件事情</li>
+                            <li class="chineseContent">能不能在此函式中再抽一個函式?</li>
+                        </ul>
+                    <li class="chineseContent">由上而下撰寫</li>
+                    <li class="chineseContent">少用switch (因為違反了做一件事情原則)</li>
+                    <li class="chineseContent">函式名稱要能表達他做什麼事情</li>
+                    <li class="chineseContent">越少參數越好 (不要超過三個!!)</li>
+                    <li class="chineseContent">不要傳flag進函式</li>
+                    <li class="chineseContent">多個參數，要有順序意義</li>
+                    <li class="chineseContent">函式命名注意動詞(函式名稱)與名詞(參數名稱)</li>
+                    <li class="chineseContent">不要偷偷夾雜會影響其他狀態的東西</li>
+                    <li class="chineseContent">少用輸出型參數 (如丟Collection進去改變內容)</li>
+                        <ul>
+                            <li class="chineseContent">應該丟進去後要有回傳值出來讓外部拿取</li>
+                        </ul>
+                    <li class="chineseContent">確認可做與實際做事情，分開成兩個函式，不要一個函式把兩件事情做完</li>
+                    <li class="chineseContent">用一次型的例外處理取代多層的if</li>
+                    <li class="chineseContent">將trycatch提出 (盡量裡面只放函式)</li>
+                    <li class="chineseContent">不要在catch與finally之後再做事情</li>
+                    <li class="chineseContent">不要重複寫相同的函式</li>
+                    <li class="chineseContent">函式撰寫是草稿再重構</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 4 註解</p>
+                <p class="chinese">○ 不要幫爛程式寫註解，改寫他!!</p>
+                <ul>
+                    <li class="chineseContent">不要用註解來解釋程式 (用了就表示你的程式不好)</li>
+                    <li class="chineseContent">解釋意圖、後果、輸出輸入都是不好的</li>
+                    <li class="chineseContent">不要留有TODO (開發期間可以)</li>
+                    <li class="chineseContent">不要留署名 (請善用版本控管軟體)</li>
+                    <li class="chineseContent">大括號右邊不要有解釋什麼結束的註解 (表示程式太長了)</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 5 編排</p>
+                <p class="chinese">○ 團隊討論的編排優先</p>
+                <ul>
+                    <li class="chineseContent">空白行可以凸顯要表達的資訊</li>
+                    <li class="chineseContent">變數宣告盡量靠近使用區域</li>
+                    <li class="chineseContent">執行的順序由上往下寫</li>
+                    <li class="chineseContent">相近觀念的函式寫在附近</li>
+                    <li class="chineseContent">一行不要超過120字元 (不要滾左右捲軸，我也不喜歡太長自動分行)</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 6 物件與資料結構</p>
+                <p class="chinese">○ 資料結構 → 只有許多參數供設定修改的物件</p>
+                <p class="chinese">○ 物件 → 提供操縱資料的函式(如service)</p>
+                <ul>
+                    <li class="chineseContent">物件將資料藏在抽象層後面，暴露函式 (如呼叫某service拿到某三個物件運算後的結果)</li>
+                    <li class="chineseContent">資料結構將資料暴露，沒有函式 (如一個bean供大家隨意修改屬性)</li>
+                    <li class="chineseContent">結構化(程序式)的程式碼難以加新的資料結構</li>
+                    <li class="chineseContent">物件導向的程式碼難以加新的函式</li>
+                    <li class="chineseContent">連續取出時，取出資料結構是合理的</li>
+                    <li class="chineseContent">public屬性不要再有getter與setter</li>
+                    <li class="chineseContent">如果目標是一個物件，就不應該使用函式後還需要加工，應該將結果封裝起來，外部直接取用</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 7 錯誤處理</p>
+                <p class="chinese">○ 不要讓錯誤處理模糊了程式碼的邏輯</p>
+                <ul>
+                    <li class="chineseContent">不要回傳錯誤碼，用例外處理</li>
+                    <li class="chineseContent">trycatch放在開頭 (最好內包函式就好，函式錯誤直接throw)</li>
+                    <li class="chineseContent">盡量不要用檢查型例外 (應該用包裹起來，不然會throws傳遞造成一堆程式碼要改)</li>
+                    <li class="chineseContent">若有多種例外要要判斷，應包裝多個catch為一種自己的例外class，並丟出</li>
+                    <li class="chineseContent">若catch也要做事情，應該把trycatch包到函數內，client不應該知道例外</li>
+                    <li class="chineseContent">不要回傳null，使用null object或拋出例外或用class包裝</li>
+                    <li class="chineseContent">不要傳遞null，會造成method內判斷邏輯複雜</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 8 邊界</p>
+                <p class="chinese">○ 使用第三方軟體是無可避免的，要做好良好的切割與邊界設定</p>
+                <ul>
+                    <li class="chineseContent">第三方軟體通常希望有通用性，建議使用新class包裝通用性的部分，輸出需要的型別</li>
+                    <li class="chineseContent">測試第三方軟體，撰寫測試程式</li>
+                    <li class="chineseContent">以proxy概念使用第三方軟體，避免第三方程式碼散落各地，升級維護困難</li>
+                    <li class="chineseContent">切割尚未存在的程式</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 9 單元測試</p>
+                <p class="chinese">○ 正式產品之前，一定要寫測試</p>
+                <ul>
+                    <li class="chineseContent">TDD三大法則 P139</li>
+                    <li class="chineseContent">測試程式依然要保持整潔、可讀性，同時要refactor</li>
+                    <li class="chineseContent">注意assert的使用，盡量少，但邏輯合理下一個函式內可以有多個</li>
+                    <li class="chineseContent">一個測試函式只測試一個概念</li>
+                    <li class="chineseContent">保持F.I.R.S.T</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 10 類別</p>
+                <ul>
+                    <li class="chineseContent">注意撰寫類別時由上往下的順序，private在public之後</li>
+                    <li class="chineseContent">盡量使用private，不得已才用protected 或 default</li>
+                    <li class="chineseContent">類別要簡短! 最好15字內 (太長表示可以用命名讓它更清楚更小)</li>
+                    <li class="chineseContent">系統是由多個單一職則的小類別組成，不是少數大類別組成</li>
+                    <li class="chineseContent">一個方法裡面使用過多參數，就應該拉成類別處理</li>
+                    <li class="chineseContent">大程式 → 抽函式 → 抽類別</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 11 系統</p>
+                <ul>
+                    <li class="chineseContent">將關注的事情分開來</li>
+                    <li class="chineseContent">主程式與Main分開來 (明確切開service、dao與其他)，多使用工廠模式</li>
+                    <li class="chineseContent">多使用DI</li>
+                    <li class="chineseContent">系統架構大時要保持是當的關注點做分離</li>
+                    <li class="chineseContent">系統架構複雜 → 很難做單元測試 → 程式沒切好or架構有問題</li>
+                    <li class="chineseContent">測試驅動的系統架構 (時時以可測試的方向撰寫架構)</li>
+                    <li class="chineseContent">系統要隨時保持整潔，應隨時以抽象或介面表達，降低耦合</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 12 羽化</p>
+                <ul>
+                    <li class="chineseContent">簡單設計四守則</li>
+                        <ul>
+                            <li class="chineseContent">執行完所有的測試</li>
+                            <li class="chineseContent">沒有重複的部分</li>
+                            <li class="chineseContent">表達程式設計師的本意</li>
+                            <li class="chineseContent">最小化類別和方法的數量</li>
+                        </ul>
+                    <li class="chineseContent">所有東西都要測試，測試時就能檢查出有無遵守單一責任原則(SRP)</li>
+                    <li class="chineseContent">程式永遠在重構</li>
+                    <li class="chineseContent">在小處提取重複的程式碼，才能在系統大觀下重複使用程式碼(使用Template method pattern)</li>
+                    <li class="chineseContent">選擇良好的命名，讓程式簡短，讓程式看得懂</li>
+                    <li class="chineseContent">消除重複程式要避免做過頭，要同時讓類別與方法保持最少</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 13 平行化</p>
+                <p class="chinese">○ 針對Thread的clean Code</p>
+                <ul>
+                    <li class="chineseContent">平行畫的程式，要拆開 做什麼 與 何時做</li>
+                    <li class="chineseContent">遵守單一職責原則(SRP)</li>
+                    <li class="chineseContent">注意看API是否為Thread-Safe</li>
+                    <li class="chineseContent">善用Design Pattern</li>
+                        <ul>
+                            <li class="chineseContent">Producer-consumer</li>
+                            <li class="chineseContent">Reader-writers</li>
+                            <li class="chineseContent">Dining-philosophers</li>
+                        </ul>
+                    <li class="chineseContent">避免在一共享物件上使用超過一個以上的同步方法</li>
+                    <li class="chineseContent">程式區塊保持乾淨、簡短</li>
+                    <li class="chineseContent">做出可測試執行緒的程式碼</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 14 持續的精練</p>
+                <p class="chinese">○ Refactor實例</p>
+                <ul>
+                    <li class="chineseContent">不要滿足於現狀，持續的重構、抽換</li>
+                    <li class="chineseContent">先加程式，再刪除老舊程式</li>
+                </ul>
+                <br>
+                <p class="chinese chineseBold">Chapter 15 JUnit的內部結構</p>
+                <p class="chinese">○ 剖析JUnit部分程式並重構</p>
+                <br>
+                <p class="chinese chineseBold">Chapter 16 重構SerialDate</p>
+                <ul>
+                    <li class="chineseContent">使用列舉</li>
+                    <li class="chineseContent">使用Pattern</li>
+                    <li class="chineseContent">多使用、多測試、多找邊界</li>
+                </ul>
+                <br>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Juicyroach 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../../resource/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../resource/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

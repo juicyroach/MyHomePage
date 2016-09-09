@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Bridge Pattern</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../resource/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../resource/css/modern-business.css" rel="stylesheet">
+
+    <!-- for syntax code -->
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shBrushJava.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../resource/css/syntaxhighlighter/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+    <!-- Custom Fonts -->
+    <link href="../../resource/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../resource/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Juicyroach</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Font-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../html.html">HTML</a>
+                            </li>
+                            <li>
+                                <a href="../javascript.html">Javascript</a>
+                            </li>
+                            <li>
+                                <a href="../css.html">CSS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Back-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../server.html">Server</a>
+                            </li>
+                            <li>
+                                <a href="../java.html">Java</a>
+                            </li>
+                            <li>
+                                <a href="../db.html">DB</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resource <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../app.html">App</a>
+                            </li>
+                            <li>
+                                <a href="../website.html">Web Site</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Bridge Pattern
+                    <small>by <a href="../about.html">Juicyroach</a>
+                    </small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-12">
+                <!-- Blog Post -->
+                <hr>
+                <!-- Date/Time -->
+                <p><i class="fa fa-clock-o"></i> Posted on Apr 10, 2016 at 04:00 PM</p>
+                <hr>
+                <!-- Preview Image -->
+                <img class="img-responsive" src="../../resource/img/java/content/designPattern/design-pattern.jpg" alt="">
+                <hr>
+                <!-- Post Content -->
+                <p class="chinese">● 目地 : 將抽象物件(abstract 要用的privte物件)與行為(subclass的method)分開</p>
+                <p class="chinese">● 使用時機 : 當我們有一個具有多個具體實現(concrete subclass)都繼承相同的抽象類別，且這些具體實現有部份中含有相同的概念(用到差不多的邏輯或差不多的物件)</p>
+                <p class="chinese">● 想法 : 在抽象物件那層加入一個類似strategy的物件，讓相同的邏輯或概念抽成class level，讓他能隨時抽換</p>
+                <p class="chinese">● UML : </p>
+                <img class="img-responsive imgCenter" src="../../resource/img/java/content/designPattern/bridge/uml.png" alt="">
+                <p class="chinese">● 程式與解說 : </p>
+                <p class="chinese">假設咖啡有大杯與小杯都繼承Coffee類別，對於要不要加料這件事情可以抽成一個Coffee的一個行為類別，方便做抽換</p>
+                <p class="chinese">首先要先做出加料的行為類別</p>
+                <pre class="brush: java;">
+                public interface CoffeeToping {
+                    
+                    public String addToping();
+
+                }
+
+                public class MilkToping implements CoffeeToping {
+
+                    @Override
+                    public String addToping() {
+                        // System.out.println("Add milk");
+                        return "Add milk";
+                    }
+
+                }
+
+                public class NoToping implements CoffeeToping {
+
+                    @Override
+                    public String addToping() {
+                        // System.out.println("Do not add toping");
+                        return "Add notiong";
+                    }
+
+                }
+                </pre>
+                <p class="chinese">接著撰寫主要的Model，也就是咖啡的物件</p>
+                <pre class="brush: java;">
+                public abstract class Coffee {
+
+                    private CoffeeToping toping;
+
+                    public Coffee(CoffeeToping toping) {
+                        this.toping = toping;
+                    }
+
+                    public CoffeeToping getToping() {
+                        return toping;
+                    }
+
+                    public abstract void getCoffee();
+
+                }
+
+                public class SmallCoffee extends Coffee {
+
+                    public SmallCoffee(CoffeeToping toping) {
+                        super(toping);
+                    }
+
+                    @Override
+                    public void getCoffee() {
+                        System.out.println("Small coffee with " + this.getToping().addToping());
+                    }
+
+                }
+
+                public class LargeCoffee extends Coffee {
+
+                    public LargeCoffee(CoffeeToping toping) {
+                        super(toping);
+                    }
+
+                    @Override
+                    public void getCoffee() {
+                        System.out.println("Large coffee with " + this.getToping().addToping());
+                    }
+
+                }
+                </pre>
+                <p class="chinese">最後Client來對咖啡物件做操作，因為我們把加料的動作拉成一個行為物件，因此是可以一個可以抽換的</p>
+                <pre class="brush: java;">
+                public class Client {
+
+                    public static void main(String[] args) {
+                        Coffee smallCoffee=new SmallCoffee(new MilkToping());
+
+                        Coffee largeCoffee=new LargeCoffee(new NoToping());
+                        
+                        
+                        smallCoffee.getCoffee();
+                        largeCoffee.getCoffee();
+                    }
+
+                }
+                </pre>
+                <p class="chinese">個人認為Bridge就是在常見的Model架構中加入了Strategy，讓所有特別的行為都獨立可抽換，也是以合成代替繼承的範例</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Juicyroach 2016</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../../resource/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../resource/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

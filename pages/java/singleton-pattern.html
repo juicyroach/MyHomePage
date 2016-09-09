@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Singleton Pattern</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../resource/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../resource/css/modern-business.css" rel="stylesheet">
+
+    <!-- for syntax code -->
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shBrushJava.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../resource/css/syntaxhighlighter/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+    <!-- Custom Fonts -->
+    <link href="../../resource/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../resource/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Juicyroach</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Font-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../html.html">HTML</a>
+                            </li>
+                            <li>
+                                <a href="../javascript.html">Javascript</a>
+                            </li>
+                            <li>
+                                <a href="../css.html">CSS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Back-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../server.html">Server</a>
+                            </li>
+                            <li>
+                                <a href="../java.html">Java</a>
+                            </li>
+                            <li>
+                                <a href="../db.html">DB</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resource <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../app.html">App</a>
+                            </li>
+                            <li>
+                                <a href="../website.html">Web Site</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Singleton Pattern
+                    <small>by <a href="../about.html">Juicyroach</a>
+                    </small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-12">
+                <!-- Blog Post -->
+                <hr>
+                <!-- Date/Time -->
+                <p><i class="fa fa-clock-o"></i> Posted on May 17, 2015 at 12:00 PM</p>
+                <hr>
+                <!-- Preview Image -->
+                <img class="img-responsive" src="../../resource/img/java/content/designPattern/design-pattern.jpg" alt="">
+                <hr>
+                <!-- Post Content -->
+                <p class="chinese">● 目地 : 希望在Runtime時，某物件永遠都只有一個實例</p>
+                <p class="chinese">● 使用時機 : 讀取檔案之程式、Thread狀況等等...</p>
+                <p class="chinese">● 想法 : 讓某個類別無法在外部使用new的方式生成，改為使用static的方式獲取實例，且永遠回覆為同一個實例。</p>
+                <p class="chinese">● UML : </p>
+                <img class="img-responsive imgCenter" src="../../resource/img/java/content/designPattern/singleton/uml.jpg" alt="">
+                <p class="chinese">● 程式與解說 : </p>
+                <p class="chinese">為了達到想法，我們就使用private的建構子強迫外部無法使用new的方式建立實體，同時開放一個靜態的方法讓外部拿取。</p>
+                <pre class="brush: java;">
+                public class LazySingelton {
+                    private static LazySingelton instance;
+
+                    private LazySingelton() {
+                    }
+
+                    public static LazySingelton getInstance() {
+                        if (instance == null) {
+                            instance = new LazySingelton();
+                        }
+                        return instance;
+                    }
+                }
+                </pre>
+                <p class="chinese">可以從程式看出，當第一次呼叫到程式的時候才會真正誕生一個實體，而後再次呼叫時都是重複取出相同的實體。此方式被更為Lazy initialization</p>
+                <p class="chinese">但是很不幸的，上述的Lazy initialization在多執行緒的情況下是有可能產生出多個實體的!因此上述程式幾乎是不會使用的。</p>
+                <p class="chinese">為了對付多執行緒的狀況，有以下三種方式才是正確且最常用的Singleton Pattern。</p>
+                <p class="chinese chineseBold">1. Lazy initialization </p>
+                <p class="chinese">此方法效能較差，原因在於每次取用時都要同步化，但邏輯上只有第一次取用才需要同步化。</p>
+                <pre class="brush: java;">
+                public class LazySingelton {
+                    private static LazySingelton instance;
+
+                    private LazySingelton() {
+                    }
+
+                    public static LazySingelton getInstance() {
+                        if (instance == null) {
+                            synchronized (LazySingelton.class) {
+                                if (instance == null) {
+                                    instance = new LazySingelton();
+                                }
+                            }
+                        }
+                        return instance;
+                    }
+                }
+                </pre>
+                <p class="chinese chineseBold">2. Eager initialization </p>
+                <p class="chinese">此方法於App一開始時就建立好實例，確保不會有同步化的狀況發生，使用上比Lazy好上許多，但缺點就是萬一沒使用到，此實例會一直佔用記憶體。</p>
+                <pre class="brush: java;">
+                public class EagerlySingelton {
+                    private static EagerlySingelton instance = new EagerlySingelton();
+
+                    private EagerlySingelton() {
+                    }
+
+                    public static EagerlySingelton getInstance() {
+                        return instance;
+                    }
+                }
+                </pre>
+                <p class="chinese chineseBold">3. Double-Checked Locking </p>
+                <p class="chinese">雙重鎖(Double-ckecked)是綜合Lazy 與 Eager而成，可以看到程式檢查了兩次實體是否存在，如果不存在時才使用同步化建立實體。</p>
+                <pre class="brush: java;">
+                public class DoubleLockSingelton {
+                    private volatile static DoubleLockSingelton instance;
+
+                    private DoubleLockSingelton() {
+                    }
+
+                    public static DoubleLockSingelton getInstance() {
+                        if (instance == null) {
+                            synchronized (DoubleLockSingelton.class) {
+                                if (instance == null) {
+                                    instance = new DoubleLockSingelton();
+                                }
+                            }
+                        }
+                        return instance;
+                    }
+                }
+                </pre>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Juicyroach 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../../resource/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../resource/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

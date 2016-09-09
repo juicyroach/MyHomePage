@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Factory Method Pattern</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../resource/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../resource/css/modern-business.css" rel="stylesheet">
+
+    <!-- for syntax code -->
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shBrushJava.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../resource/css/syntaxhighlighter/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+    <!-- Custom Fonts -->
+    <link href="../../resource/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../resource/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Juicyroach</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Font-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../html.html">HTML</a>
+                            </li>
+                            <li>
+                                <a href="../javascript.html">Javascript</a>
+                            </li>
+                            <li>
+                                <a href="../css.html">CSS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Back-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../server.html">Server</a>
+                            </li>
+                            <li>
+                                <a href="../java.html">Java</a>
+                            </li>
+                            <li>
+                                <a href="../db.html">DB</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resource <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../app.html">App</a>
+                            </li>
+                            <li>
+                                <a href="../website.html">Web Site</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Factory Method Pattern
+                    <small>by <a href="../about.html">Juicyroach</a>
+                    </small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-12">
+                <!-- Blog Post -->
+                <hr>
+                <!-- Date/Time -->
+                <p><i class="fa fa-clock-o"></i> Posted on JUN 02, 2015 at 11:30 PM</p>
+                <hr>
+                <!-- Preview Image -->
+                <img class="img-responsive" src="../../resource/img/java/content/designPattern/design-pattern.jpg" alt="">
+                <hr>
+                <!-- Post Content -->
+                <p class="chinese">● 目地 : 創造一個「建立物件」的界面，讓使用者直接向他拿取實體(的介面)</p>
+                <p class="chinese">● 使用時機 : 可能誕生同種介面但不同型態時</p>
+                <p class="chinese">● 想法 : 透過一個統一個「建立物件」的界面獲取實體物件，並把實體的交由次類別誕生。外界只需要一個Factory介面獲取一個結果(的介面)</p>
+                <p class="chinese">● UML : </p>
+                <img class="img-responsive imgCenter" src="../../resource/img/java/content/designPattern/factory/uml.jpg" alt="">
+                <p class="chinese">● 程式與解說 : </p>
+                <p class="chinese">在Factory Method Pattern的前身其實有個Simple Facoty Pattern，他其實不太算個Pattern，比較算個編寫習怪。而後衍伸出Factory Method Pattern的。</p>
+                <p class="chinese">Simple Facoty Pattern的想法是，將同性質需要判斷的部分抽成一個class，使外部不需要複雜的邏輯。</p>
+                <pre class="brush: java;">
+                public class CupFactory {
+
+                    public static Cup createCup(String type) {
+                        Cup cup = null;
+                        if (StringUtils.equals("coffee", type)) {
+                            cup = new CoffeeCup();
+                        } else if (StringUtils.equals("mug", type)) {
+                            cup = new Mug();
+                        }
+                        return cup;
+                    }
+                }
+                </pre>
+                <p class="chinese">而Client要使用時，只需向factory拿取結果即可</p>
+                <pre class="brush: java;">
+                public class Client {
+                    public static void main(String[] args) {
+                        Cup cup = CupFactory.createCup("mug");
+
+                        cup.fill();
+                        cup.drink();
+                    }
+                }
+                </pre>
+                <p class="chinese">從上面程式可以看出一個致命的缺點：如果要多新增杯子，我們就一直要修改CupFactory的內容。這樣就違反了SOLD的原則。</p>
+                <p class="chinese">因此有了Factory Method Pattern。他的做法就是「一個實體杯子就對應到一個實體的工廠」，同時杯子有共同的介面，實體工廠也有共同的介面。因此會變成如下：</p>
+                <pre class="brush: java;">
+                public interface CupFactory {
+
+                    public Cup createCup();
+                }
+                </pre>
+                <pre class="brush: java;">
+                public class CoffeeCupFactory implements CupFactory {
+
+                    @Override
+                    public Cup createCup() {
+                        return new CoffeeCup();
+                    }
+                }
+                </pre>
+                <pre class="brush: java;">
+                public class MugFactory implements CupFactory {
+
+                    @Override
+                    public Cup createCup() {
+                        return new Mug();
+                    }
+                }
+                </pre>
+                <p class="chinese">最終在使用上Client根本不需要是哪個實體的Factory或哪個實體的Cup，只要拿Factory來createCup即可。(這邊方便顯示，Client還是使用new，但應該是由外部給予一個factory的介面，Client不需要知道實體)</p>
+                <pre class="brush: java;">
+                public class Client {
+                    public static void main(String[] args) {
+                        CupFactory coffeeCupFactory = new CoffeeCupFactory();
+                        Cup cup = coffeeCupFactory.createCup();
+
+                        cup.fill();
+                        cup.drink();
+                    }
+                }
+                </pre>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Juicyroach 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../../resource/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../resource/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

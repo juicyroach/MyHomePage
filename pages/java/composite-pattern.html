@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Composite Pattern</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../resource/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../resource/css/modern-business.css" rel="stylesheet">
+
+    <!-- for syntax code -->
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="../../resource/js/syntaxhighlighter/shBrushJava.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../resource/css/syntaxhighlighter/shCoreDefault.css"/>
+    <script type="text/javascript">SyntaxHighlighter.all();</script>
+
+    <!-- Custom Fonts -->
+    <link href="../../resource/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../resource/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Juicyroach</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Font-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../html.html">HTML</a>
+                            </li>
+                            <li>
+                                <a href="../javascript.html">Javascript</a>
+                            </li>
+                            <li>
+                                <a href="../css.html">CSS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Back-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../server.html">Server</a>
+                            </li>
+                            <li>
+                                <a href="../java.html">Java</a>
+                            </li>
+                            <li>
+                                <a href="../db.html">DB</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resource <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../app.html">App</a>
+                            </li>
+                            <li>
+                                <a href="../website.html">Web Site</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Composite Pattern
+                    <small>by <a href="../about.html">Juicyroach</a>
+                    </small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-12">
+                <!-- Blog Post -->
+                <hr>
+                <!-- Date/Time -->
+                <p><i class="fa fa-clock-o"></i> Posted on JUL 06, 2016 at 12:00 PM</p>
+                <hr>
+                <!-- Preview Image -->
+                <img class="img-responsive" src="../../resource/img/java/content/designPattern/design-pattern.jpg" alt="">
+                <hr>
+                <!-- Post Content -->
+                <p class="chinese">● 目地 : 完整代表樹狀結構的狀況</p>
+                <p class="chinese">● 使用時機 : 當需要一個樹狀結構做為model時</p>
+                <p class="chinese">● 想法 : 提供一個呼叫簡單的樹狀結構，應該具有完整且遞迴感覺的成式架構</p>
+                <p class="chinese">● UML : </p>
+                <img class="img-responsive imgCenter" src="../../resource/img/java/content/designPattern/composite/uml.jpg" alt="">
+                <p class="chinese">● 程式與解說 : </p>
+                <p class="chinese">由於是結構部分的Design Pattern，是針對結構方面做設計</p>
+                <p class="chinese">首先需先實作一抽象的Class，其中含有需共有的動作</p>
+                <pre class="brush: java;">
+                public abstract class Component {
+
+                    public String serialNumber;
+
+                    public Component(String serialNumber) {
+                        this.serialNumber = serialNumber;
+                    }
+
+                    public abstract void print();
+
+                }
+                </pre>
+                <p class="chinese">接著是將Composite和Leaf的部分做出來</p>
+                <pre class="brush: java;">
+                public class Bom extends Component {
+
+                    List< Component > childs = new ArrayList< Component >();
+
+                    public Bom(String serialNumber) {
+                        super(serialNumber);
+                    }
+
+                    public void add(Component component) {
+                        childs.add(component);
+
+                    }
+
+                    public void remove(Component component) {
+                        if (childs.contains(component)) {
+                            childs.remove(component);
+                        }
+
+                    }
+
+                    @Override
+                    public void print() {
+                        System.out.println(this.serialNumber);
+                        for (Component component : childs) {
+                            component.print();
+                        }
+
+                    }
+
+                }
+
+                public class Part extends Component {
+
+                    public Part(String serialNumber) {
+                        super(serialNumber);
+                    }
+
+                    @Override
+                    public void print() {
+                        System.out.println(this.serialNumber);
+                    }
+
+                }
+                </pre>
+                <p class="chinese">其中Composite部分是複合的關鍵，因此通常都需要有Add和Remove功能</p>
+                <p class="chinese">最後在使用此種架構的方式如下</p>
+
+                <pre class="brush: java;">
+                public class ClientTest {
+
+                    public static void main(String[] args) {
+                        Bom bom69 =new Bom("69N0123456");
+                        Bom bom65 =new Bom("65N0654321");
+                        Bom bom60 =new Bom("60N0654321");
+                        Part battery=new Part("08A0-0001000");
+                        bom69.add(bom65);
+                        bom65.add(bom60);
+                        bom60.add(battery);
+                        
+                        bom69.print();
+                    }
+                }
+                </pre>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Juicyroach 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../../resource/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../resource/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sublime Q&amp;A</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../resource/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../resource/css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../resource/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../resource/css/main.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Juicyroach</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Font-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../html.html">HTML</a>
+                            </li>
+                            <li>
+                                <a href="../javascript.html">Javascript</a>
+                            </li>
+                            <li>
+                                <a href="../css.html">CSS</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Back-End <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../server.html">Server</a>
+                            </li>
+                            <li>
+                                <a href="../java.html">Java</a>
+                            </li>
+                            <li>
+                                <a href="../db.html">DB</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resource <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../app.html">App</a>
+                            </li>
+                            <li>
+                                <a href="../website.html">Web Site</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Sublime Q&amp;A
+                    <small>by <a href="../about.html">Juicyroach</a>
+                    </small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-12">
+                <!-- Blog Post -->
+                <hr>
+                <!-- Date/Time -->
+                <p><i class="fa fa-clock-o"></i> Posted on May 19, 2015 at 11:00 PM</p>
+                <hr>
+                <!-- Preview Image -->
+                <img class="img-responsive" src="../../resource/img/app/content/sublime-qa-content.png" alt="">
+                <hr>
+                <!-- Post Content -->
+                <p class="chinese">這篇記錄了一些我或我身邊的人遇到關於Sublime的問題與解決方式。偷懶把一些常用的外掛也放在這裡好了...</p>
+                <br>
+                <p class="chinese chineseBold">如何安裝外掛!?</p>
+                <p class="chineseContent">安裝 Package Control (總管理所有外掛的外掛) </p>
+                <ul>
+                    <li class="chineseContent">到 https://sublime.wbond.net/Package%20Control.sublime-package 下載檔案</li>
+                    <li class="chineseContent">開啟 sublime 上方 Preferences => Browse packages 會跳出檔案總管</li>
+                    <li class="chineseContent">在跳出的檔案總管位置 選擇到 上一層 資料夾位置 ( *\AppData\Roaming\Sublime Text 2)</li>
+                    <li class="chineseContent">進入Installed Packages資料夾內，將下載下來的檔案放入</li>
+                    <li class="chineseContent">重新啟動Sublime，就安裝成功! (可在工具列的Preferences選單中找到Package Control 選項)</li>
+                    <li class="chineseContent">[有了Package Control即可以快速安裝任何插件]</li>
+                </ul>
+                <hr>
+                <p class="chinese chineseBold">中文會亂碼耶!?</p>
+                <p class="chineseContent">安裝ConvertToUTF8外掛!</p>
+                <ul>
+                    <li class="chineseContent">在Sublime頁面案下ctrl+shift+p</li>
+                    <li class="chineseContent">輸入package control: install package，等待數秒 [開啟package control外掛]</li>
+                    <li class="chineseContent">在出現的框框打上convertToUTF8，按下enter!</li>
+                    <li class="chineseContent">重新啟動Sublime，即可完成!</li>
+                </ul>
+                <hr>
+                <p class="chinese chineseBold">如何用滑鼠區域性的選取想要的資料!?</p>
+                <p class="chineseContent">請使用shift+滑鼠右鍵，框選想要的部分!</p>
+                <ul>
+                    <li class="chineseContent">在Sublime頁面案下ctrl+shift+p</li>
+                    <li class="chineseContent">輸入package control: install package，等待數秒 [開啟package control外掛]</li>
+                    <li class="chineseContent">在出現的框框打上convertToUTF8，按下enter!</li>
+                    <li class="chineseContent">重新啟動Sublime，即可完成!</li>
+                </ul>
+                <hr>
+                <p class="chinese chineseBold">如何顯示Space空格數與Tab數量!?</p>
+                <ul>
+                    <li class="chineseContent">上方工具列 → Preference → Settings-User 點選會跳出一個使用JSON寫成的設定檔頁面</li>
+                    <li class="chineseContent">大括弧內加入 "draw_white_space": "all" 即可完成!!</li>
+                    <li class="chineseContent">[Tab會使用-表示,Space會使用.表示]</li>
+                </ul>
+                <hr>
+                <p class="chinese chineseBold">如何快速將多行合併成一行!?</p>
+                <ul>
+                    <li class="chineseContent">反白多行，或用ctrl+左鍵點選各行某處</li>
+                    <li class="chineseContent">ctrl+j</li>
+                </ul>
+                <hr>
+                <p class="chinese chineseBold">如何快速刪除空白行!?</p>
+                <p class="chineseContent">運用正規表示式搜尋</p>
+                <ul>
+                    <li class="chineseContent">Crtl+H (也可以點選工具列Find → replace)</li>
+                    <li class="chineseContent">alt+r (或是點選最左邊的按鈕) 開啟正規表示式搜尋</li>
+                    <li class="chineseContent">find欄位填入^\n   replace欄位空白不要填  選擇replace all即可完成!</li>
+                </ul>
+                <hr>
+                <p class="chinese chineseBold">有沒有辦法快速改html的標籤大小寫呢?!</p>
+                <p class="chineseContent">運用正規表示式搜尋</p>
+                <ul>
+                    <li class="chineseContent">Ctrl+f</li>
+                    <li class="chineseContent">alt+r (或是點選最左邊的按鈕) 開啟正規表示式搜尋</li>
+                    <li class="chineseContent">打入  &lt;(/?\w+) 找出全部的標籤並有框框標註</li>
+                    <li class="chineseContent">alt+enter    框起全部找到的結果</li>
+                    <li class="chineseContent">ctrl+k+u 全部改大寫   (ctrl+k+L 全部改小寫)</li>
+                </ul>
+                <p class="chinese chineseBold">如何選擇顯示模組?</p>
+                <p class="chineseContent">Sublime有許多模組，開啟不同類型的時候會自動判斷副檔名，在新建檔案或有某時想更換顯示類型的話，可以點選右下角更換檔案型別，Sublime會自動的幫你上好顏色唷!</p>
+                <hr>
+                <p class="chinese chineseBold">我不喜歡黑色，可以換顯示的主題嗎?</p>
+                <p class="chineseContent">請至上方工具列 Preferences → Color Scheme內預覽更換!</p>
+                <hr>
+                <p class="chinese chineseBold">我想要format JavaScript檔案!</p>
+                <p class="chineseContent">請安裝jsFromat</p>
+                <ul>
+                    <li class="chineseContent">ctrl+shift+p</li>
+                    <li class="chineseContent">輸入package control: install package</li>
+                    <li class="chineseContent">在出現的框框打上jsFromat，按下enter! 等待左下角顯示安裝完成後重開Sublime即可!</li>
+                    <li class="chineseContent">預設format鍵為ctrl+alt+f，可在Preferences → package settings → jsFormat → key blindings-Default裡面修改!</li>
+                </ul>
+                <hr>
+                <p class="chinese chineseBold">Syntax模組有好多用不到，我想移除讓我比較快能選到我要的!</p>
+                <p class="chineseContent">有兩種方法可以達到</p>
+                <p class="chineseBold chineseContent">◎ 眼不見為淨大法</p>
+                <ul>
+                    <li class="chineseContent">工具列Preferences → Settings-User</li>
+                    <li class="chineseContent">在JSON檔案內加入 "ignored_packages":[" Python",“想要看不到的Syntax名稱”]</li>
+                    <li class="chineseContent">儲存後可以完成</li>
+                </ul>
+                <p class="chineseBold chineseContent">◎ 斬草除根大法</p>
+                <ul>
+                    <li class="chineseContent">工具列Preferences → Browse Packages</li>
+                    <li class="chineseContent">直接刪除不想要用的Syntax !</li>
+                    <li class="chineseContent">重開Sublime後即可完成</li>
+                </ul>
+                <p class="chinese chineseBold">怎麼打開旁邊的side bar讓我能快速找到檔案呢?</p>
+                <ul>
+                    <li class="chineseContent">工具列view → side bar → show side bar (hide side bar)</li>
+                    <li class="chineseContent">或著覺得看旁邊很麻煩，也可以用ctrl+p用打部分關鍵字快速跳換!</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Juicyroach 2015</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="../../resource/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../resource/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
